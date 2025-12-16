@@ -1,0 +1,26 @@
+# Uninstall and reinstall the transformers library to ensure a clean and compatible version.
+# Removing the version constraint to allow pip to install the latest stable version.
+!pip uninstall -y transformers
+!pip install transformers
+
+from transformers import pipeline
+
+classifier = pipeline(
+    "text-classification",
+    model="Hate-speech-CNERG/bert-base-uncased-hatexplain"
+)
+comments = [
+    "You are an idiot.",
+    "I hope you have a wonderful day!",
+    "People like you should not exist.",
+    "This is a normal comment."
+]
+
+for c in comments:
+    result = classifier(c)[0]
+    print(f"Text: {c}")
+    if result['score']<0.75:
+        print(f"Score: {result['score']}\ntoxic")
+    else:
+        print(f"Score: {result['score']}")
+    print("-" * 40)

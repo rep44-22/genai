@@ -1,5 +1,5 @@
 import os
-os.environ['GEMINI_API_KEY'] = "AIzaSyBuyDTjjLsJ-LPB_j7xEAMHgBUcoYTYJlI"
+os.environ['GEMINI_API_KEY'] = ""
 # Import required modules
 from crewai import Agent, Task, Crew, LLM
 import os
